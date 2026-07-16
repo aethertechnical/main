@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aether Technical Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#0052cc',
+                            darkBg: '#121214', /* Slightly lighter dark mode background */
+                            lightBg: '#ffffff'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'JetBrains Mono', monospace; }
+        .tier-card { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        /* Prevent layout shifting during mouse movement or selection changes */
+        #dynamic-logo path { transition: stroke-dasharray 0.15s ease, d 0.2s ease; }
+    </style>
+</head>
+<body class="bg-brand-lightBg text-zinc-900 dark:bg-brand-darkBg dark:text-zinc-100 antialiased transition-colors duration-200">
+
+    <header class="w-full pt-12 pb-6 flex flex-col items-center justify-center border-b border-zinc-100 dark:border-zinc-900">
+        <div class="w-16 h-16 mb-4 text-brand-blue dark:text-zinc-100 flex items-center justify-center">
+            <svg id="dynamic-logo" class="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                <path id="logo-hull" d="M12 2L2 22h20L12 2z" stroke-linecap="round" stroke-linejoin="round"/>
+                <path id="logo-mast" d="M12 6v11" stroke-linecap="round"/>
+                <path id="logo-deck" d="M7 17h10" stroke-linecap="round"/>
+            </svg>
+        </div>
+        
+        <h1 class="text-xs tracking-[0.3em] uppercase font-medium text-zinc-900 dark:text-white">
+            AETHER TECHNICAL SOLUTIONS
+        </h1>
+    </header>
+
+    <nav class="sticky top-0 z-50 bg-white/80 dark:bg-brand-darkBg/80 backdrop-blur-md border-b border-zinc-100 dark:border-zinc-900 px-6 py-3 flex justify-between items-center text-[11px] tracking-widest uppercase">
+        <div class="flex space-x-6 text-zinc-400">
+            <a href="#architecture" class="hover:text-brand-blue dark:hover:text-white transition-colors">01//MISSION</a>
+            <a href="#tiers" class="hover:text-brand-blue dark:hover:text-white transition-colors">02//PLANS</a>
+            <a href="#contact" class="hover:text-brand-blue dark:hover:text-white transition-colors">03//CONTACT</a>
+        </div>
+
+        <button onclick="toggleMode()" class="flex items-center space-x-2 text-zinc-400 hover:text-zinc-900 dark:hover:text-white focus:outline-none select-none">
+            <span class="inline dark:hidden">MODE: LIGHT</span>
+            <span class="hidden dark:inline">MODE: DARK</span>
+            <span class="text-brand-blue font-bold">[⚡]</span>
+        </button>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-6 py-16 space-y-24">
+        
+        <section id="architecture" class="space-y-4">
+            <div class="text-[10px] tracking-widest text-brand-blue dark:text-zinc-500 font-medium">// CORE DIRECTIVE</div>
+            <p class="text-sm md:text-base leading-relaxed font-light text-zinc-600 dark:text-zinc-400 max-w-2xl">
+                Delivering Intelligent, Autonomous, and Scalable Services.
+            </p>
+        </section>
+
+        <section id="tiers" class="space-y-6">
+            <div class="text-[10px] tracking-widest text-zinc-400 border-b border-zinc-100 dark:border-zinc-900 pb-2">
+                ENTERPRISE_SERVICE_TIERS_v1.2 // SELECT_DEPLOYMENT_MODEL
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+                <div id="tier-free" onclick="selectTier('free')" class="tier-card p-6 border border-zinc-200 dark:border-zinc-800 rounded space-y-4 flex flex-col justify-between cursor-pointer bg-transparent hover:border-zinc-400 dark:hover:border-zinc-600">
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-zinc-400 font-medium tracking-widest block">01 // ESSENTIAL</span>
+                            <span id="radio-free" class="text-[10px] font-bold text-zinc-300 dark:text-zinc-700">[ ]</span>
+                        </div>
+                        <div class="text-lg font-medium text-zinc-900 dark:text-white">$0<span class="text-xs text-zinc-400">/mo</span></div>
+                        <p class="text-zinc-500 dark:text-zinc-400 leading-relaxed pt-2">
+                            Foundational API integration. Standard request routing and community-driven support for testing and development environments.
+                        </p>
+                    </div>
+                    <div class="text-[10px] text-zinc-400 tracking-wider pt-4">// DEV_ENVIRONMENT</div>
+                </div>
+
+                <div id="tier-pro" onclick="selectTier('pro')" class="tier-card p-6 border border-brand-blue rounded space-y-4 flex flex-col justify-between cursor-pointer bg-zinc-50/50 dark:bg-zinc-900/40">
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-brand-blue font-medium tracking-widest block">02 // PROFESSIONAL</span>
+                            <span id="radio-pro" class="text-[10px] font-bold text-brand-blue">[●]</span>
+                        </div>
+                        <div class="text-lg font-medium text-zinc-900 dark:text-white">$150<span class="text-xs text-zinc-400">/mo</span></div>
+                        <p class="text-zinc-500 dark:text-zinc-400 leading-relaxed pt-2">
+                            Priority processing and reliable uptime. Dynamic model routing across premium AI networks for scaling production workloads.
+                        </p>
+                    </div>
+                    <div class="text-[10px] text-brand-blue tracking-wider pt-4">// PRODUCTION_GATEWAY</div>
+                </div>
+
+                <div id="tier-elite" onclick="selectTier('elite')" class="tier-card p-6 border border-zinc-200 dark:border-zinc-800 rounded space-y-4 flex flex-col justify-between cursor-pointer bg-transparent hover:border-zinc-400 dark:hover:border-zinc-600">
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-zinc-400 font-medium tracking-widest block">03 // ENTERPRISE</span>
+                            <span id="radio-elite" class="text-[10px] font-bold text-zinc-300 dark:text-zinc-700">[ ]</span>
+                        </div>
+                        <div class="text-lg font-medium text-zinc-900 dark:text-white">$600<span class="text-xs text-zinc-400">/mo</span></div>
+                        <p class="text-zinc-500 dark:text-zinc-400 leading-relaxed pt-2">
+                            Isolated infrastructure for maximum security. Highest priority throughput with dedicated engineering support and custom SLAs.
+                        </p>
+                    </div>
+                    <div class="text-[10px] text-zinc-400 tracking-wider pt-4">// ISOLATED_COMPUTE</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="border-l-2 border-brand-blue pl-6 py-2 space-y-4">
+            <span class="text-[10px] text-zinc-400 tracking-widest uppercase">// INFRASTRUCTURE OVERVIEW</span>
+            <div class="overflow-x-auto text-[11px] text-zinc-500 dark:text-zinc-400 pt-2">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-white font-medium">
+                            <th class="pb-2 pr-4 font-normal">LAYER</th>
+                            <th class="pb-2 pr-4 font-normal">ENTERPRISE CAPABILITY</th>
+                            <th class="pb-2 font-normal">TECHNOLOGY PARTNER</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-zinc-100 dark:divide-zinc-900">
+                        <tr>
+                            <td class="py-3 pr-4 font-medium text-zinc-900 dark:text-white">COMPUTE</td>
+                            <td class="py-3 pr-4">Scalable processing power optimized for complex enterprise AI models.</td>
+                            <td class="py-3 text-zinc-400">Claude / Multi-LLM</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 pr-4 font-medium text-zinc-900 dark:text-white">LOGIC</td>
+                            <td class="py-3 pr-4">Automated workflow orchestration and intelligent agent systems.</td>
+                            <td class="py-3 text-zinc-400">Agent Framework</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 pr-4 font-medium text-zinc-900 dark:text-white">TRANSPORT</td>
+                            <td class="py-3 pr-4">Secure, unified API routing layer for seamless systems integration.</td>
+                            <td class="py-3 text-zinc-400">OpenRouter</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="contact" class="bg-zinc-50/30 dark:bg-zinc-900/10 border border-zinc-100 dark:border-zinc-900 p-8 space-y-6">
+            <div class="space-y-2">
+                <span class="text-[10px] text-brand-blue tracking-widest uppercase">// ENTERPRISE_ENGAGEMENT</span>
+                <p class="text-xs leading-relaxed text-zinc-500 dark:text-zinc-400 max-w-lg">
+                    Connect with our deployment specialists to architect a secure, scalable integration strategy for your business.
+                </p>
+            </div>
+            
+            <div>
+                <a id="contact-btn" href="mailto:ops@aethertechnical.io?subject=Aether%20Technical%20Solutions%20Consultation%20-%20PROFESSIONAL" class="inline-block bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-white dark:hover:bg-zinc-100 dark:text-zinc-900 px-6 py-3 text-xs tracking-widest font-medium transition-colors">
+                    [SCHEDULE_CONSULTATION]
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-zinc-100 dark:border-zinc-900 mt-24 py-12 px-6 flex flex-col items-center justify-center space-y-6 text-[10px] text-zinc-400 tracking-widest">
+        <div class="flex space-x-8 text-zinc-400 dark:text-zinc-500">
+            <a href="#" class="hover:text-brand-blue dark:hover:text-white transition-colors" title="GitHub">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+            </a>
+            <a href="#" class="hover:text-brand-blue dark:hover:text-white transition-colors" title="X">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4l11.733 16h4.267l-11.733 -16zM4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                </svg>
+            </a>
+            <a href="#" class="hover:text-brand-blue dark:hover:text-white transition-colors" title="LinkedIn">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"></path>
+                    <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+            </a>
+        </div>
+
+        <div>
+            © 2026 AETHER TECHNICAL SOLUTIONS // CORE SYSTEMS VERIFIED.
+        </div>
+    </footer>
+
+    <script>
+        // TIER CONFIGURATION PIPELINE
+        const tiers = {
+            free: { id: 'tier-free', radio: 'radio-free', name: 'ESSENTIAL' },
+            pro: { id: 'tier-pro', radio: 'radio-pro', name: 'PROFESSIONAL' },
+            elite: { id: 'tier-elite', radio: 'radio-elite', name: 'ENTERPRISE' }
+        };
+
+        function selectTier(selectedKey) {
+            const contactBtn = document.getElementById('contact-btn');
+            
+            Object.keys(tiers).forEach(key => {
+                const card = document.getElementById(tiers[key].id);
+                const radio = document.getElementById(tiers[key].radio);
+                
+                if (key === selectedKey) {
+                    card.className = "tier-card p-6 border border-brand-blue rounded space-y-4 flex flex-col justify-between cursor-pointer bg-zinc-50/50 dark:bg-zinc-900/40";
+                    radio.innerHTML = "[●]";
+                    radio.className = "text-[10px] font-bold text-brand-blue";
+                    
+                    contactBtn.href = `mailto:ops@aethertechnical.io?subject=Aether%20Technical%20Solutions%20Consultation%20-%20${tiers[key].name}`;
+                    contactBtn.innerHTML = `[SCHEDULE_${tiers[key].name}_CONSULTATION]`;
+                } else {
+                    card.className = "tier-card p-6 border border-zinc-200 dark:border-zinc-800 rounded space-y-4 flex flex-col justify-between cursor-pointer bg-transparent hover:border-zinc-400 dark:hover:border-zinc-600";
+                    radio.innerHTML = "[ ]";
+                    radio.className = "text-[10px] font-bold text-zinc-300 dark:text-zinc-700";
+                }
+            });
+        }
+
+        // DYNAMIC LOGO VECTOR INTERPOLATION ENGINE
+        const logoMast = document.getElementById('logo-mast');
+        const logoDeck = document.getElementById('logo-deck');
+
+        window.addEventListener('mousemove', (e) => {
+            // Get normalized cursor values relative to view coordinates (0.0 to 1.0)
+            const normX = e.clientX / window.innerWidth;
+            const normY = e.clientY / window.innerHeight;
+
+            // Dynamically morph the interior geometry coordinates while maintaining minimalist boundaries
+            const mastX1 = 10 + (normX * 4); // X parameter mapping from 10 to 14
+            const mastY2 = 14 + (normY * 5); // Y depth mapping from 14 to 19
+            const deckY = 15 + (normY * 4);  // Deck line scaling mapping from 15 to 19
+            const deckX1 = 5 + (normX * 3);  // Shift left beam anchor
+            const deckX2 = 19 - (normX * 3); // Shift right beam anchor
+
+            // Apply calculated coordinate morph vectors down to SVG elements
+            logoMast.setAttribute('d', `M${mastX1} 6v${mastY2}`);
+            logoDeck.setAttribute('d', `M${deckX1} ${deckY}h${deckX2 - deckX1}`);
+        });
+
+        // LIGHT & DARK THEME DISPATCHER
+        function toggleMode() {
+            const htmlElement = document.documentElement;
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                htmlElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.remove('dark');
+        } else {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</body>
+</html>
